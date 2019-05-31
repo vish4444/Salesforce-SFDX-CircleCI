@@ -1,0 +1,9 @@
+{
+  "packageDirectories": [
+    {"path": "force-app","default": true}
+
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://speed-momentum-4084-dev-ed.cs6.my.salesforce.com",
+  "sourceApiVersion": "45.0"
+}

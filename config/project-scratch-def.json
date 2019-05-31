@@ -1,0 +1,12 @@
+{
+  "orgName": "Demo Company",
+  "edition": "Developer",
+    "features": ["AuthorApex", "Communities"],
+    "settings": {
+        "orgPreferenceSettings": {
+              "networksEnabled": true,
+              "s1DesktopEnabled": true,
+              "chatterEnabled": true
+    }
+  }
+}
