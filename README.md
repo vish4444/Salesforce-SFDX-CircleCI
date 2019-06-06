@@ -58,9 +58,10 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Salesforce Apex Code](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm) - type of project
+* [SFDX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm) - IDE/environment for SF dev
+* [CircleCI](https://circleci.com/docs/2.0/) - CI tool/server
+
 
 ## Contributing
 
@@ -72,17 +73,17 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Vishal Mundlye** - *Initial work* - [vish4444](https://github.com/vish4444)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of xxx who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+License info if any
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
+* number 1
+* number 2
 * etc
 

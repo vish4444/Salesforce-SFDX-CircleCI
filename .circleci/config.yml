@@ -4,6 +4,16 @@ orbs:
     hello: circleci/hello-build@0.0.7 # uses the circleci/buildpack-deps Docker image
 
 workflows:
-    "Hello Workflow":
+    "Stage 1":
         jobs:
           - hello/hello-build
+    "Stage 2":
+        before script:
+            - sfdx --version
+    "Stage 3":
+        during script:
+            - echo "This is stage 3, during script"
+    "Stage 4":
+        after script:
+            - sfdx plugins --core
+            - echo "All steps ran successfully"
