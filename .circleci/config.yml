@@ -7,13 +7,10 @@ workflows:
     "Stage 1":
         jobs:
           - hello/hello-build
-    "Stage 2":
-        before script:
+    "Before script":
             - sfdx --version
-    "Stage 3":
-        during script:
+    "During Script":
             - echo "This is stage 3, during script"
-    "Stage 4":
-        after script:
+    "After Script":
             - sfdx plugins --core
             - echo "All steps ran successfully"
