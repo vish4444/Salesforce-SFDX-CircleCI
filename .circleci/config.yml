@@ -5,7 +5,7 @@ jobs:
         - image: circleci/buildpack-deps:curl-browsers
         steps:
         - run:
-        name: "Step 3"
+            name: "Step 3"
             command: echo "Hello ${CIRCLE_USERNAME}"
         - run:
             name: Step 4 - Show some of the CircleCI runtime env vars
