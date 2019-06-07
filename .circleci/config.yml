@@ -1,4 +1,4 @@
-version: 2.1
+version: 2
 jobs:
     build:
         docker:
@@ -29,3 +29,9 @@ jobs:
         - run: 
             name: "mytestjob Step 2 - Testing"
             command: echo "test ends"
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - mytestjob        
