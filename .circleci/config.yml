@@ -8,11 +8,10 @@ workflows:
         jobs:
           - hello/hello-build
 jobs:
-    testjob:
-        description: "A very simple command for demonstration purposes"
-        parameters:
-        to:
-            type: string
-            default: "Hello World"
+    build:
+        machine:
+            image: ubuntu-1604:201903-01
         steps:
-        - run: echo << parameters.to >>
+        - run:
+            name: "Testing"
+            command: echo "Hi"
