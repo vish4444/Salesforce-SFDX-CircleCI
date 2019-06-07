@@ -20,13 +20,7 @@ jobs:
             command: |-
                 echo "uname:" $(uname -a)
                 echo "arch: " $(arch)
-            name: Show system information
-jobs:            
-    build:
-        myendjob:
-            machine:
-                image: ubuntu-1604:201903-01
-            steps:
-                - run:
-                    name: "Testing"
-                    command: echo "ends"
+            name: Show system information             
+        - run:
+            name: "Testing"
+            command: echo "ends"
