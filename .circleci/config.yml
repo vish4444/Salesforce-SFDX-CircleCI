@@ -2,14 +2,13 @@ version: 2.1
 jobs:
     build:
         docker:
-        name: Step 1 - This steps spins up the virtual machine on which the build runs
         - image: circleci/buildpack-deps:curl-browsers
         steps:
         - run:
-        name: "Step 2"
+        name: "Step 3"
             command: echo "Hello ${CIRCLE_USERNAME}"
         - run:
-            name: Step 3 - Show some of the CircleCI runtime env vars
+            name: Step 4 - Show some of the CircleCI runtime env vars
             command: |-
                 echo "TRIGGERER: ${CIRCLE_USERNAME}"
                 echo "BUILD_NUMBER: ${CIRCLE_BUILD_NUM}"
@@ -18,11 +17,15 @@ jobs:
                 echo "RUNNING JOB: ${CIRCLE_JOB}"
                 echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
                 echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
+    mytestjob:
+        docker:
+        - image: circleci/buildpack-deps:curl-browsers
+        steps:
         - run:
-            name: Step 4 - Show system information        
+            name: mytestjob Step 1 - Show system information        
             command: |-
                 echo "uname:" $(uname -a)
                 echo "arch: " $(arch)
-        - run:
-            name: "Step 5 - Testing"
-            command: echo "ends"
+        - run: 
+            name: "mytestjob Step 2 - Testing"
+            command: echo "test ends"
