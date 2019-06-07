@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-    mystartjob:
+    build:
         docker:
         - image: circleci/buildpack-deps:curl-browsers
         steps:
