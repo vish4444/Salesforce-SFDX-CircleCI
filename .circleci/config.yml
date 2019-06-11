@@ -18,8 +18,8 @@ jobs:
                 echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
                 echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
     UnitTest:
-        machine: true
-            image: circleci/classic:latest
+        docker:
+        - image: circleci/buildpack-deps:curl-browsers
         steps:
         - run:
             name: mytestjob Step 1 - Show system information        
@@ -39,12 +39,12 @@ jobs:
                 # npm install sfdx-cli --global          
 workflows:
   version: 2
-  build_and_test:
+  myWF:
     jobs:
       - build
-      - UnitTest
-        #requires:
-          #  - Build
-      #- Setup:   
-        #requires:
-         #   - UnitTest
+      - UnitTest:
+        requires:
+            - build
+      - Setup:   
+        requires:
+            - UnitTest
