@@ -38,7 +38,7 @@ jobs:
         - run:
             name: Install Lightning Testing Service
             command: |
-                node_modules/sfdx-cli/bin/run force:lightning:test:install -t full --targetdevhubusername $HUB_SFDX_USER
+                node_modules/sfdx-cli/bin/run force:lightning:test:install -t full
         - run: 
             name: Push Source
             command: |
