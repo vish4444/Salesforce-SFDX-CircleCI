@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  Build:
     docker:
     - image: circleci/buildpack-deps:curl-browsers
     steps:
@@ -17,7 +17,7 @@ jobs:
           echo "RUNNING JOB: ${CIRCLE_JOB}"
           echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
           echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
-  mytestjob:
+  UnitTest:
     docker:
     - image: circleci/buildpack-deps:curl-browsers
     steps:
@@ -29,13 +29,24 @@ jobs:
       - run: 
           name: "mytestjob Step 2 - Testing"
           command: echo "test ends"
+  Setup:
+    docker:
+	- image: circleci/node:latest
+	steps:
+	- run:
+	    command: |-
+		  node --version
+		  #npm install sfdx-cli --global          
 workflows: 
 #Workflows define a list of jobs and their run order. It is possible to run jobs in parallel, sequentially, on a schedule, or 
 #with a manual gate using an approval job.
   version: 2
   build_and_test:
     jobs:
-      - build
-      - mytestjob:
+      - Build
+      - UnitTest:
           requires:
-            - build      
+            - Build
+      - Setup:
+          requires:
+            - UnitTest   
