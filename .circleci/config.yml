@@ -1,6 +1,6 @@
 version: 2
 jobs:
-    Build:
+    build:
         docker:
         - image: circleci/buildpack-deps:curl-browsers
         steps:
@@ -18,8 +18,8 @@ jobs:
                 echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
                 echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
     UnitTest:
-        machine:
-        - image: circleci/classic:latest
+        machine: true
+            image: circleci/classic:latest
         steps:
         - run:
             name: mytestjob Step 1 - Show system information        
@@ -41,7 +41,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - Build
+      - build
       - UnitTest
         #requires:
           #  - Build
