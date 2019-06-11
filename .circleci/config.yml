@@ -1,8 +1,7 @@
 version: 2
 jobs:
-    Build: #job name
+    Build:
         docker:
-        #the list of pre-built CircleCI images on dockerhubwhat is an image: https://circleci.com/docs/2.0/circleci-images/            
         - image: circleci/buildpack-deps:curl-browsers
         steps:
         - run:
@@ -37,17 +36,15 @@ jobs:
         - run:
             command: |-
                 node --version
-                #npm install sfdx-cli --global          
+                # npm install sfdx-cli --global          
 workflows:
-    #Workflows define a list of jobs and their run order. It is possible to run jobs in parallel, sequentially, on a schedule, or 
-    #with a manual gate using an approval job.
   version: 2
   build_and_test:
     jobs:
       - Build
       - UnitTest:
         requires:
-            - Build # wait for build1 job to complete successfully before starting    
+            - Build
       - Setup:   
         requires:
-            - UnitTest # wait for build1 job to complete successfully before starting    
+            - UnitTest
