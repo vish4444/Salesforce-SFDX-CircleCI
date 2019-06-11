@@ -1,59 +1,70 @@
---- 
-jobs: 
-  Build: 
-    docker: 
-      - 
-        image: "circleci/buildpack-deps:curl-browsers"
-    steps: 
-      - 
-        run: 
-          command: "echo \"Hello ${CIRCLE_USERNAME}\""
-          name: "Step 3"
-      - 
-        run: 
-          command: |-
-              echo "TRIGGERER: ${CIRCLE_USERNAME}"
-              echo "BUILD_NUMBER: ${CIRCLE_BUILD_NUM}"
-              echo "BUILD_URL: ${CIRCLE_BUILD_URL}"
-              echo "BRANCH: ${CIRCLE_BRANCH}"
-              echo "RUNNING JOB: ${CIRCLE_JOB}"
-              echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
-              echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
-          name: "Step 4 - Show some of the CircleCI runtime env vars"
-  Setup: 
-    docker: 
-      - 
-        image: "circleci/node:latest"
-    steps: 
-      - 
-        run: 
-          command: "node --version"
-  UnitTest: 
-    docker: 
-      - 
-        image: "circleci/buildpack-deps:curl-browsers"
-    steps: 
-      - 
-        run: 
-          command: |-
-              echo "uname:" $(uname -a)
-              echo "arch: " $(arch)
-          name: "mytestjob Step 1 - Show system information"
-      - 
-        run: 
-          command: "echo \"test ends\""
-          name: "mytestjob Step 2 - Testing"
 version: 2
-workflows: 
-  build_and_test: 
-    jobs: 
-      - Build
-      - 
-        UnitTest: 
-          requires: 
-            - Build
-      - 
-        Setup: 
-          requires: 
-            - UnitTest
-  version: 2
+jobs:
+  build:
+    docker:
+        - image: circleci/openjdk:latest-node-browsers
+    steps:
+        - checkout
+        - restore_cache:
+            keys:
+                - sfdx-6.8.2-local
+        - run:
+            name: Install Salesforce DX
+            command: |
+                if [ ! -d node_modules/sfdx-cli ]; then
+                    export SFDX_AUTOUPDATE_DISABLE=true
+                    export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
+                    export SFDX_DOMAIN_RETRY=300
+                    npm install sfdx-cli@6.8.2
+                    node_modules/sfdx-cli/bin/run --version
+                    node_modules/sfdx-cli/bin/run plugins --core
+                fi
+        - save_cache:
+            key: sfdx-6.8.2-local
+            paths: 
+                - node_modules
+        - run: 
+            name: Create Scratch Org
+            command: |
+                openssl aes-256-cbc -k $KEY -in access/server.key.enc -out access/server.key -d -md md5
+                node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key -u $HUB_SFDX_USER
+                node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json -a VSCI_ScOrg
+        - run:
+            name: Remove Server Key
+            when: always
+            command: |
+                rm access/server.key
+        - run:
+            name: Install Lightning Testing Service
+            command: |
+                node_modules/sfdx-cli/bin/run force:lightning:test:install -t jasmine
+        - run: 
+            name: Push Source
+            command: |
+                node_modules/sfdx-cli/bin/run force:source:push -u VSCI_ScOrg
+        #- run:
+            #name: Run Apex Tests
+            #command: |
+                #mkdir ~/tests
+                #mkdir ~/tests/apex
+                #node_modules/sfdx-cli/bin/run force:apex:test:run -u scratch -c -r human -d ~/tests/apex -w 9999
+        - run:
+            name: Run Lightning Tests
+            command: | 
+                mkdir ~/tests/lightning
+                node_modules/sfdx-cli/bin/run force:lightning:test:run -d ~/tests/lightning -r human -a jasmineTests.app -o
+        #- run: 
+            #name: Push to Codecov.io (Optional Step)
+            #command: |
+                #cp ~/tests/apex/test-result-codecoverage.json .
+                #bash <(curl -s https://codecov.io/bash)
+        - run: 
+            name: Clean Up
+            when: always
+            command: |
+                node_modules/sfdx-cli/bin/run force:org:delete -u VSCI_ScOrg -p
+                #rm ~/tests/apex/*.txt ~/tests/apex/test-result-7*.json
+        - store_artifacts:
+            path: ~/tests
+        - store_test_results:
+            path: ~/tests
