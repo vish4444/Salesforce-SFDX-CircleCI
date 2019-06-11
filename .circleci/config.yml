@@ -31,15 +31,13 @@ jobs:
           command: echo "test ends"
   Setup:
     docker:
-	- image: circleci/node:latest
+    - image: circleci/node:latest
 	steps:
-	- run:
-	    command: |-
-		  node --version
-		  #npm install sfdx-cli --global          
+	  - run:
+	      command: |-
+		    node --version
+		    #npm install sfdx-cli --global          
 workflows: 
-#Workflows define a list of jobs and their run order. It is possible to run jobs in parallel, sequentially, on a schedule, or 
-#with a manual gate using an approval job.
   version: 2
   build_and_test:
     jobs:
