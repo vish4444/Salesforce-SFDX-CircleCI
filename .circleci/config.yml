@@ -42,9 +42,9 @@ workflows:
   build_and_test:
     jobs:
       - Build
-      - UnitTest:
-        requires:
-            - Build
-      - Setup:   
-        requires:
-            - UnitTest
+      - UnitTest
+        #requires:
+          #  - Build
+      #- Setup:   
+        #requires:
+         #   - UnitTest
