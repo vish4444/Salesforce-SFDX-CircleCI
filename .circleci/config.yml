@@ -1,50 +1,59 @@
-version: 2
-jobs:
-  Build:
-    docker:
-    - image: circleci/buildpack-deps:curl-browsers
-    steps:
-    - run:
-        name: "Step 3"
-        command: echo "Hello ${CIRCLE_USERNAME}"
-    - run:
-        name: Step 4 - Show some of the CircleCI runtime env vars
-        command: |-
-          echo "TRIGGERER: ${CIRCLE_USERNAME}"
-          echo "BUILD_NUMBER: ${CIRCLE_BUILD_NUM}"
-          echo "BUILD_URL: ${CIRCLE_BUILD_URL}"
-          echo "BRANCH: ${CIRCLE_BRANCH}"
-          echo "RUNNING JOB: ${CIRCLE_JOB}"
-          echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
-          echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
-  UnitTest:
-    docker:
-    - image: circleci/buildpack-deps:curl-browsers
-    steps:
-      - run:
-          name: mytestjob Step 1 - Show system information        
+--- 
+jobs: 
+  Build: 
+    docker: 
+      - 
+        image: "circleci/buildpack-deps:curl-browsers"
+    steps: 
+      - 
+        run: 
+          command: "echo \"Hello ${CIRCLE_USERNAME}\""
+          name: "Step 3"
+      - 
+        run: 
           command: |-
-            echo "uname:" $(uname -a)
-            echo "arch: " $(arch)
-      - run: 
+              echo "TRIGGERER: ${CIRCLE_USERNAME}"
+              echo "BUILD_NUMBER: ${CIRCLE_BUILD_NUM}"
+              echo "BUILD_URL: ${CIRCLE_BUILD_URL}"
+              echo "BRANCH: ${CIRCLE_BRANCH}"
+              echo "RUNNING JOB: ${CIRCLE_JOB}"
+              echo "JOB PARALLELISM: ${CIRCLE_NODE_TOTAL}"
+              echo "CIRCLE_REPOSITORY_URL: ${CIRCLE_REPOSITORY_URL}"
+          name: "Step 4 - Show some of the CircleCI runtime env vars"
+  Setup: 
+    docker: 
+      - 
+        image: "circleci/node:latest"
+    steps: 
+      - 
+        run: 
+          command: "node --version"
+  UnitTest: 
+    docker: 
+      - 
+        image: "circleci/buildpack-deps:curl-browsers"
+    steps: 
+      - 
+        run: 
+          command: |-
+              echo "uname:" $(uname -a)
+              echo "arch: " $(arch)
+          name: "mytestjob Step 1 - Show system information"
+      - 
+        run: 
+          command: "echo \"test ends\""
           name: "mytestjob Step 2 - Testing"
-          command: echo "test ends"
-  Setup:
-    docker:
-    - image: circleci/node:latest
-	steps:
-	  - run:
-	      command: |-
-		    node --version
-		    #npm install sfdx-cli --global          
+version: 2
 workflows: 
-  version: 2
-  build_and_test:
-    jobs:
+  build_and_test: 
+    jobs: 
       - Build
-      - UnitTest:
-          requires:
+      - 
+        UnitTest: 
+          requires: 
             - Build
-      - Setup:
-          requires:
-            - UnitTest   
+      - 
+        Setup: 
+          requires: 
+            - UnitTest
+  version: 2
