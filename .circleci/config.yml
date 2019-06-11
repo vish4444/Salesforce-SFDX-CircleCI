@@ -38,4 +38,4 @@ workflows:
       - build
       - mytestjob:
         requires:
-            - build      
+          - build      
