@@ -20,7 +20,7 @@ jobs:
   mytestjob:
     docker:
     - image: circleci/buildpack-deps:curl-browsers
-      steps:
+    steps:
       - run:
           name: mytestjob Step 1 - Show system information        
           command: |-
