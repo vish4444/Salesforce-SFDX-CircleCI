@@ -47,7 +47,7 @@ workflows:
       - Build
       - UnitTest
         requires:
-            - build # wait for build1 job to complete successfully before starting    
+            - Build # wait for build1 job to complete successfully before starting    
       - Setup    
         requires:
             - UnitTest # wait for build1 job to complete successfully before starting    
