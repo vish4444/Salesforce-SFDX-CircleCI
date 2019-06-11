@@ -37,5 +37,5 @@ workflows:
     jobs:
       - build
       - mytestjob:
-        requires:
-          - build      
+          requires:
+            - build      
