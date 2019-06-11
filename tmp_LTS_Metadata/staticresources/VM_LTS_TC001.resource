@@ -6,7 +6,7 @@ describe("LTS Examples 2", function() {
         it('LTS Test 2', function(done) {
             $T.createComponent("c:HelloWorld", {}, true)
             .then(function(component) {
-                expect(component.get('v.predicate')).toContain("care");
+                expect(component.get('v.greeting')).toContain("World");
                 done();
             }).catch(function(e) {
                 done.fail(e);

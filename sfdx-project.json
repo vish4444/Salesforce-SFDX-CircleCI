@@ -4,6 +4,6 @@
 
   ],
   "namespace": "",
-  "sfdcLoginUrl": "https://speed-momentum-4084-dev-ed.cs6.my.salesforce.com",
+  "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "45.0"
 }
