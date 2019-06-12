@@ -29,44 +29,45 @@ jobs:
                 openssl enc -nosalt -aes-256-cbc -d -in access/server.key.enc -out access/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
                 #openssl aes-256-cbc -k $KEY -in access/server.key.enc -out access/server.key -d -md md5
                 node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key -u $HUB_SFDX_USER
-                node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 1
-                node_modules/sfdx-cli/bin/run force:org:open -u circle_build_$CIRCLE_BUILD_NUM
-        #- run:
-            #name: Remove Server Key
-            #when: always
-            #command: |
-                #rm access/server.key
-        - run:
-            name: Install Lightning Testing Service
-            command: |
-                node_modules/sfdx-cli/bin/run force:lightning:test:install -t full
-        - run: 
-            name: Push Source
-            command: |
-                node_modules/sfdx-cli/bin/run force:source:push -u circle_build_$CIRCLE_BUILD_NUM
+                #node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 1
+                #node_modules/sfdx-cli/bin/run force:org:open -u circle_build_$CIRCLE_BUILD_NUM
+                node_modules/sfdx-cli/bin/run force:auth:web:login -r https://page-saas-7514-dev-ed.my.salesforce.com
+        # - run:
+        #     name: Remove Server Key
+        #     when: always
+        #     command: |
+        #         rm access/server.key
+        # - run:
+        #     name: Install Lightning Testing Service
+        #     command: |
+        #         node_modules/sfdx-cli/bin/run force:lightning:test:install -t full
+        # - run: 
+        #     name: Push Source
+        #     command: |
+        #         node_modules/sfdx-cli/bin/run force:source:push -u circle_build_$CIRCLE_BUILD_NUM
         #- run:
             #name: Run Apex Tests
             #command: |
                 #mkdir ~/tests  
                 #mkdir ~/tests/apex
                 #node_modules/sfdx-cli/bin/run force:apex:test:run -u scratch -c -r human -d ~/tests/apex -w 9999
-        - run:
-            name: Run Lightning Tests
-            command: | 
-                mkdir ~/tests/lightning
-                node_modules/sfdx-cli/bin/run force:lightning:test:run -d ~/tests/lightning -r human -a jasmineTests.app -o
+        # - run:
+        #     name: Run Lightning Tests
+        #     command: | 
+        #         mkdir ~/tests/lightning
+        #         node_modules/sfdx-cli/bin/run force:lightning:test:run -d ~/tests/lightning -r human -a jasmineTests.app -o
         #- run: 
             #name: Push to Codecov.io (Optional Step)
             #command: |
                 #cp ~/tests/apex/test-result-codecoverage.json .
                 #bash <(curl -s https://codecov.io/bash)
-        - run: 
-            name: Clean Up
-            when: always
-            command: |
-                node_modules/sfdx-cli/bin/run force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
+        #- run: 
+            #name: Clean Up
+            #when: always
+            #command: |
+                #node_modules/sfdx-cli/bin/run force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
                 #rm ~/tests/apex/*.txt ~/tests/apex/test-result-7*.json
-        - store_artifacts:
-            path: ~/tests
-        - store_test_results:
-            path: ~/tests
+        # - store_artifacts:
+        #     path: ~/tests
+        # - store_test_results:
+        #     path: ~/tests
