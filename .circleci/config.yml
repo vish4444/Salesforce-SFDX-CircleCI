@@ -29,7 +29,7 @@ jobs:
                 openssl enc -nosalt -aes-256-cbc -d -in access/server.key.enc -out access/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
                 #openssl aes-256-cbc -k $KEY -in access/server.key.enc -out access/server.key -d -md md5
                 #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key -u $HUB_SFDX_USER
-                node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i 3MVG9qbIpUScOGtbzuYovPuhtN0.bBV3RAQymPYIahAhEwyZ6DPKK.xgW_5VCkN7tcbHgU79wxOOJI9_8lKwp -f ./access/server.key --username test-vpig5gogph4b@example.com --instanceurl https://page-saas-7514-dev-ed.my.salesforce.com
+                node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i 3MVG9qbIpUScOGtbzuYovPuhtN0.bBV3RAQymPYIahAhEwyZ6DPKK.xgW_5VCkN7tcbHgU79wxOOJI9_8lKwp -f ./access/server.key --username test-vpig5gogph4b@example.com
                 #node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 1
                 #node_modules/sfdx-cli/bin/run force:org:open -u circle_build_$CIRCLE_BUILD_NUM
                 #node_modules/sfdx-cli/bin/run force:auth:web:login -r https://page-saas-7514-dev-ed.my.salesforce.com
