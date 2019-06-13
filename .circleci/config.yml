@@ -50,6 +50,7 @@ jobs:
             name: Push Source
             command: |
                 node_modules/sfdx-cli/bin/run force:source:push -u $DEVHUB_2_SFDX_USER -f
+                #for new scratch org add a step to assign permset also
         #- run:
             #name: Run Apex Tests
             #command: |
@@ -63,7 +64,7 @@ jobs:
                 mkdir -p -v tests
                 #mkdir /tests/lightning
                 #pwd
-                #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
+                node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
                 node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d tests -r human -a jasmineTests.app -o
         #- run: 
             #name: Push to Codecov.io (Optional Step)
