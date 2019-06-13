@@ -4,6 +4,6 @@
 
   ],
   "namespace": "",
-  "sfdcLoginUrl": "https://page-saas-7514-dev-ed.my.salesforce.com",
+  "sfdcLoginUrl": "https://test.salesforce.com",
   "sourceApiVersion": "45.0"
 }
