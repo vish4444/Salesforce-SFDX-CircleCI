@@ -4,6 +4,7 @@
 
   ],
   "namespace": "",
-  "sfdcLoginUrl": "https://page-saas-7514-dev-ed.my.salesforce.com",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "oauthLocalPort" : "1919",
   "sourceApiVersion": "45.0"
 }
