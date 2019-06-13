@@ -49,7 +49,7 @@ jobs:
         - run: 
             name: Push Source
             command: |
-                node_modules/sfdx-cli/bin/run force:source:push -u $DEVHUB_2_SFDX_USER
+                node_modules/sfdx-cli/bin/run force:source:push -u $DEVHUB_2_SFDX_USER -f
         #- run:
             #name: Run Apex Tests
             #command: |
