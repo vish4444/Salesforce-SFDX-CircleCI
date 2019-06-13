@@ -59,6 +59,8 @@ jobs:
         - run:
             name: Run Lightning Tests
             command: | 
+                pwd
+                mkdir ~/tests
                 mkdir ~/tests/lightning
                 node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d ~/tests/lightning -r human -a jasmineTests.app -o
         #- run: 
