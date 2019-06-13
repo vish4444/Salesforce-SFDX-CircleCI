@@ -34,8 +34,8 @@ jobs:
                 #node_modules/sfdx-cli/bin/run force:org:open -u circle_build_$CIRCLE_BUILD_NUM
                 #node_modules/sfdx-cli/bin/run force:auth:web:login -r https://page-saas-7514-dev-ed.my.salesforce.com
                 #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key --username test-vpig5gogph4b@example.com --instanceurl https://page-saas-7514-dev-ed.my.salesforce.com
-                node_modules/sfdx-cli/bin/run force:org:list
-                ls access
+                node_modules/sfdx-cli/bin/run force:org:list --all
+                #ls access
         # - run:
         #     name: Remove Server Key
         #     when: always
@@ -64,7 +64,7 @@ jobs:
                 mkdir -p -v tests
                 #mkdir /tests/lightning
                 #pwd
-                node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
+                #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
                 node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d tests -r human -a jasmineTests.app -o
         #- run: 
             #name: Push to Codecov.io (Optional Step)
