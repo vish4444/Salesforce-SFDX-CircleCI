@@ -60,10 +60,11 @@ jobs:
             name: Run Lightning Tests
             command: | 
                 pwd
-                mkdir ~/tests
-                mkdir ~/tests/lightning
+                mkdir -p -v tests/lightning
+                #mkdir /tests/lightning
                 pwd
-                node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d ~/tests/lightning -r human -a jasmineTests.app -o
+                #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
+                node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d tests/lightning -r human -a jasmineTests.app -o
         #- run: 
             #name: Push to Codecov.io (Optional Step)
             #command: |
@@ -76,6 +77,6 @@ jobs:
                 #node_modules/sfdx-cli/bin/run force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
                 #rm ~/tests/apex/*.txt ~/tests/apex/test-result-7*.json
         - store_artifacts:
-            path: ~/tests
+            path: tests
         - store_test_results:
-            path: ~/tests
+            path: tests
