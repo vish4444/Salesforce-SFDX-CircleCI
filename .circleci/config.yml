@@ -41,7 +41,7 @@ jobs:
             when: always
             command: |
                 rm access/server.key
-                ls acccess
+                ls access
         # - run:
         #     name: Install Lightning Testing Service
         #     command: |
