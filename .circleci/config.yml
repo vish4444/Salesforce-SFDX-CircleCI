@@ -36,31 +36,31 @@ jobs:
                 #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key --username test-vpig5gogph4b@example.com --instanceurl https://page-saas-7514-dev-ed.my.salesforce.com
                 node_modules/sfdx-cli/bin/run force:org:list
                 ls access
-        - run:
-            name: Remove Server Key
-            when: always
-            command: |
-                rm access/server.key
-                ls access
         # - run:
-        #     name: Install Lightning Testing Service
+        #     name: Remove Server Key
+        #     when: always
         #     command: |
-        #         node_modules/sfdx-cli/bin/run force:lightning:test:install -u $DEVHUB_2_SFDX_USER -t full
-        # - run: 
-        #     name: Push Source
-        #     command: |
-        #         node_modules/sfdx-cli/bin/run force:source:push -u $DEVHUB_2_SFDX_USER
+        #         rm access/server.key
+        #         ls access
+        - run:
+            name: Install Lightning Testing Service
+            command: |
+                node_modules/sfdx-cli/bin/run force:lightning:test:install -u $DEVHUB_2_SFDX_USER -t full
+        - run: 
+            name: Push Source
+            command: |
+                node_modules/sfdx-cli/bin/run force:source:push -u $DEVHUB_2_SFDX_USER
         #- run:
             #name: Run Apex Tests
             #command: |
                 #mkdir ~/tests  
                 #mkdir ~/tests/apex
                 #node_modules/sfdx-cli/bin/run force:apex:test:run -u scratch -c -r human -d ~/tests/apex -w 9999
-        # - run:
-        #     name: Run Lightning Tests
-        #     command: | 
-        #         mkdir ~/tests/lightning
-        #         node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d ~/tests/lightning -r human -a jasmineTests.app -o
+        - run:
+            name: Run Lightning Tests
+            command: | 
+                mkdir ~/tests/lightning
+                node_modules/sfdx-cli/bin/run force:lightning:test:run -u $DEVHUB_2_SFDX_USER -d ~/tests/lightning -r human -a jasmineTests.app -o
         #- run: 
             #name: Push to Codecov.io (Optional Step)
             #command: |
