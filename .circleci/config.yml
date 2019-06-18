@@ -28,13 +28,8 @@ jobs:
             command: |
                 openssl enc -nosalt -aes-256-cbc -d -in access/server.key.enc -out access/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
                 node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key -u $HUB_SFDX_USER
-                #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
-                node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 1
-                #node_modules/sfdx-cli/bin/run force:org:open -u circle_build_$CIRCLE_BUILD_NUM
-                #node_modules/sfdx-cli/bin/run force:auth:web:login -r https://page-saas-7514-dev-ed.my.salesforce.com
-                #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key --username test-vpig5gogph4b@example.com --instanceurl https://page-saas-7514-dev-ed.my.salesforce.com
+                node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 12
                 node_modules/sfdx-cli/bin/run force:org:list --all
-                #ls access
         # - run:
         #     name: Remove Server Key
         #     when: always
@@ -44,12 +39,10 @@ jobs:
         - run:
             name: Install Lightning Testing Service
             command: |
-                #node_modules/sfdx-cli/bin/run force:lightning:test:install -u $DEVHUB_2_SFDX_USER -t full
                 node_modules/sfdx-cli/bin/run force:lightning:test:install -u circle_build_$CIRCLE_BUILD_NUM -t full
         - run: 
             name: Push Source
             command: |
-                #node_modules/sfdx-cli/bin/run force:source:push -u $DEVHUB_2_SFDX_USER -f
                 node_modules/sfdx-cli/bin/run force:source:push -u circle_build_$CIRCLE_BUILD_NUM -f
                 node_modules/sfdx-cli/bin/run force:user:permset:assign --permsetname VSCIMay2019_Admin -u circle_build_$CIRCLE_BUILD_NUM
         #- run:
@@ -61,11 +54,7 @@ jobs:
         - run:
             name: Run Lightning Tests
             command: | 
-                #pwd
                 mkdir -p -v tests
-                #mkdir /tests/lightning
-                #pwd
-                #node_modules/sfdx-cli/bin/run force:auth:jwt:grant -u $DEVHUB_2_SFDX_USER -i $DEVHUB_2_CONSUMER_KEY -f access/server.key
                 node_modules/sfdx-cli/bin/run force:lightning:test:run -u circle_build_$CIRCLE_BUILD_NUM -d tests -r human -a jasmineTests.app -o
         #- run: 
             #name: Push to Codecov.io (Optional Step)

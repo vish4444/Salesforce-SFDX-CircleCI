@@ -1,0 +1,18 @@
+project:
+    name: VMVSSampleSFProject
+    package:
+        name:  VSCIMay2019_UnManaged
+        api_version: '45.0'
+
+tasks:
+    robot:
+        options:
+            suites: robot/VMVSSampleSFProject/tests
+            options:
+                outputdir: robot/VMVSSampleSFProject/results
+
+    robot_testdoc:
+        options:
+            path: robot/VMVSSampleSFProject/tests
+            output: robot/VMVSSampleSFProject/doc/VMVSSampleSFProject_tests.html
+
