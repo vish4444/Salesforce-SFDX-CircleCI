@@ -5,30 +5,30 @@ jobs:
         - image: circleci/openjdk:latest-node-browsers
     steps:
         - checkout
-        - restore_cache:
-            keys:
-                - sfdx-7.13.0-local
-        - run:
-            name: Install Salesforce DX
-            command: |
-                if [ ! -d node_modules/sfdx-cli ]; then
-                    export SFDX_AUTOUPDATE_DISABLE=true
-                    export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
-                    export SFDX_DOMAIN_RETRY=300
-                    npm install sfdx-cli@7.13.0
-                    node_modules/sfdx-cli/bin/run --version
-                    node_modules/sfdx-cli/bin/run plugins --core
-                fi
-        - save_cache:
-            key: sfdx-7.13.0-local
-            paths: 
-                - node_modules
-        - run: 
-            name: Create Scratch Org
-            command: |
-                openssl enc -nosalt -aes-256-cbc -d -in access/server.key.enc -out access/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
-                node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key -u $HUB_SFDX_USER
-                node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 5
+        # - restore_cache:
+        #     keys:
+        #         - sfdx-7.13.0-local
+        # - run:
+        #     name: Install Salesforce DX
+        #     command: |
+        #         if [ ! -d node_modules/sfdx-cli ]; then
+        #             export SFDX_AUTOUPDATE_DISABLE=true
+        #             export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
+        #             export SFDX_DOMAIN_RETRY=300
+        #             npm install sfdx-cli@7.13.0
+        #             node_modules/sfdx-cli/bin/run --version
+        #             node_modules/sfdx-cli/bin/run plugins --core
+        #         fi
+        # - save_cache:
+        #     key: sfdx-7.13.0-local
+        #     paths: 
+        #         - node_modules
+        # - run: 
+        #     name: Create Scratch Org
+        #     command: |
+        #         openssl enc -nosalt -aes-256-cbc -d -in access/server.key.enc -out access/server.key -base64 -K $DECRYPTION_KEY -iv $DECRYPTION_IV
+        #         node_modules/sfdx-cli/bin/run force:auth:jwt:grant -i $HUB_CONSUMER_KEY -f ./access/server.key -u $HUB_SFDX_USER
+        #         node_modules/sfdx-cli/bin/run force:org:create -s -f config/project-scratch-def.json --targetdevhubusername $HUB_SFDX_USER -a circle_build_$CIRCLE_BUILD_NUM --setdefaultusername -d 5
                 # node_modules/sfdx-cli/bin/run force:user:password:generate -u circle_build_$CIRCLE_BUILD_NUM
         # - run:
         #     name: Remove Server Key
@@ -41,11 +41,11 @@ jobs:
         #     command: |
                 # node_modules/sfdx-cli/bin/run force:lightning:test:install -u circle_build_$CIRCLE_BUILD_NUM -t full
                 # node_modules/sfdx-cli/bin/run force:package:install -p 04tJ00000006jC9 -w 5 -u circle_build_$CIRCLE_BUILD_NUM
-        - run: 
-            name: Push Source
-            command: |
-                node_modules/sfdx-cli/bin/run force:source:push -u circle_build_$CIRCLE_BUILD_NUM -f
-                node_modules/sfdx-cli/bin/run force:user:permset:assign --permsetname VSCIMay2019_Admin -u circle_build_$CIRCLE_BUILD_NUM
+        # - run: 
+        #     name: Push Source
+        #     command: |
+                # node_modules/sfdx-cli/bin/run force:source:push -u circle_build_$CIRCLE_BUILD_NUM -f
+                # node_modules/sfdx-cli/bin/run force:user:permset:assign --permsetname VSCIMay2019_Admin -u circle_build_$CIRCLE_BUILD_NUM
                 # node_modules/sfdx-cli/bin/run force:user:permset:assign --permsetname VSCIMay2019_Admin -u VMtestuser
         #- run:
             #name: Run Apex Tests
@@ -57,18 +57,20 @@ jobs:
             name: Run Lightning Tests
             command: | 
                 mkdir -p -v tests
-                node_modules/sfdx-cli/bin/run force:package:install -p 04tJ00000006jC9 -w 5 -u circle_build_$CIRCLE_BUILD_NUM
-                node_modules/sfdx-cli/bin/run force:lightning:test:run -u circle_build_$CIRCLE_BUILD_NUM -d tests -r human -a jasmineTests.app -o
+                cp -v ./scripts/Test_Results_Zip.py ./tests
+                # node_modules/sfdx-cli/bin/run force:package:install -p 04tJ00000006jC9 -w 5 -u circle_build_$CIRCLE_BUILD_NUM
+                # node_modules/sfdx-cli/bin/run force:lightning:test:run -u circle_build_$CIRCLE_BUILD_NUM -d tests -r human -a jasmineTests.app -o
+
         #- run: 
             #name: Push to Codecov.io (Optional Step)
             #command: |
                 #cp ~/tests/apex/test-result-codecoverage.json .
                 #bash <(curl -s https://codecov.io/bash)
-        - run: 
-            name: Clean Up
-            when: always
-            command: |
-                node_modules/sfdx-cli/bin/run force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
+        # - run: 
+        #     name: Clean Up
+        #     when: always
+        #     command: |
+        #         node_modules/sfdx-cli/bin/run force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
                 #rm ~/tests/apex/*.txt ~/tests/apex/test-result-7*.json
         - store_artifacts:
             path: /tests
