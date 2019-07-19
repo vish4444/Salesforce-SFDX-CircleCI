@@ -56,8 +56,8 @@ jobs:
         - run:
             name: Run Lightning Tests
             command: | 
-                mkdir -p -v tests
-                cp -v ./scripts/Test_Results_Zip.py ./tests
+                mkdir -p -v testscripts
+                cp -v ./scripts/Test_Results_Zip.py ./testscripts
                 # node_modules/sfdx-cli/bin/run force:package:install -p 04tJ00000006jC9 -w 5 -u circle_build_$CIRCLE_BUILD_NUM
                 # node_modules/sfdx-cli/bin/run force:lightning:test:run -u circle_build_$CIRCLE_BUILD_NUM -d tests -r human -a jasmineTests.app -o
 
@@ -73,6 +73,6 @@ jobs:
         #         node_modules/sfdx-cli/bin/run force:org:delete -u circle_build_$CIRCLE_BUILD_NUM -p
                 #rm ~/tests/apex/*.txt ~/tests/apex/test-result-7*.json
         - store_artifacts:
-            path: /tests
+            path: /testscripts
         - store_test_results:
-            path: tests
+            path: testscripts
