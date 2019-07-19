@@ -1,0 +1,118 @@
+.displayNone {
+    display: none;
+}
+.ProcessingBackground {
+    background-color:#FFFFFF;
+    opacity:0.85;
+    filter:alpha(opacity = 50);
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9998;
+    top:0;
+    left:0;
+}
+.Processing {
+    z-index:9999;
+    width:96%;
+    top:50%;
+    text-align:center;
+    position:fixed;
+}
+.ProcessingData {
+    z-index:9999;
+    left:53%;
+    top:48%;
+    text-align:center;
+    position:fixed;
+    font-weight:600;
+}
+.innerTable:first-child tr:first-child td  {
+    border-top: none;
+}
+.noDisplayIcon {
+    display: none !important;
+}
+.componentPadding {
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem !important;
+}
+.verticalBaselineMiddle{
+    vertical-align: -webkit-baseline-middle !important;
+}
+.activeLI {
+    background-color: #f4f6f9;
+}
+.error-occured {
+    border-color: red !important;
+}
+.whiteSpaceWrap {
+    white-space: normal !important;
+}
+.fixedHeaderWidth {
+    width : 230px !important;
+}
+.expandCollapseButtonDiv {
+    padding-bottom: 10px;
+}
+.staticColumnFixedWidth {
+    min-width: 255px!important;
+    max-width: 255px!important;
+    white-space: normal !important;
+}
+.fixedColumnWidth {
+    min-width: 195px!important;
+    max-width: 2000px!important;
+    white-space: normal !important;
+}
+.dont-break-out {
+    /* css-3 */
+    white-space: pre-wrap !important;
+    /* Mozilla, since 1999 */
+    white-space: -moz-pre-wrap !important;
+    /* Opera 4-6 */
+    white-space: -pre-wrap !important;
+    /* Opera 7 */
+    white-space: -o-pre-wrap !important;
+    word-wrap: break-word !important;
+}
+.mainTableContainer {
+    width: 100%;
+    overflow: auto;
+}
+
+.activeLI {
+    background-color: #f4f6f9;
+}
+
+.buttonGroups {
+    margin-bottom: 2%;
+}
+
+.grey-color {
+    color: #54698d !important;
+}
+
+.icon-size {
+    height: 1rem !important;
+    width: 1rem !important;
+}
+
+/*
+media Queries go here
+*/
+@media (min-width: 48em) {
+  .slds-modal--medium .slds-modal__container {
+        width: 60%;
+        max-width: none;
+        min-width: 40rem;
+    }
+}
+
+.no_pointer_events {
+    pointer-events: none;
+}
+
+#fielsetTable {
+    table-layout: fixed;
+    width: 100%;
+}

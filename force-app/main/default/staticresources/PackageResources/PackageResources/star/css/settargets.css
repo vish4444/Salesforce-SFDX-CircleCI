@@ -1,0 +1,39 @@
+.projectIndicatorColumn {
+    min-width: 300px!important;
+    max-width: 300px!important;
+}
+
+.infoPopoverIconColumn {
+    min-width: 50px!important;
+    max-width: 50px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.totalColumn {
+    min-width: 250px!important;
+    max-width: 250px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.disagColumns {
+    min-width: 200px!important;
+    max-width: 200px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.inputWidth {
+    width: 60%!important;
+}
+
+.targetResultTable td{
+    border: 0px!important;
+}
+
+.slds .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover>td:not(.slds-is-selected),
+.slds .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover>th:not(.slds-is-selected) {
+    box-shadow: none!important;
+}
+
+.descriptionWithAllColumns {
+    width: 294px;
+}

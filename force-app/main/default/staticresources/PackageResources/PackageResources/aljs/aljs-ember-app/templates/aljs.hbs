@@ -1,0 +1,33 @@
+<header class="site-banner" role="banner">{{#link-to 'home' class="aljs-home-link" activeClass="slds-is-selected slds-is-active"}}<img src="images/aljs-icon.svg" class="aljs-icon"> Appiphony Lightning JS{{/link-to}}
+    <div class="site-skip-content"><a href="#navigation">Skip to Navigation</a></div>
+</header>
+<main class="site-main" role="main">
+    <div class="site-content aljs-site-content">
+        {{outlet}}
+    </div>
+</main>
+<nav id="navigation" class="site-navigation" role="navigation">
+    <ul class="slds-list--vertical slds-has-block-links">
+        {{#each section in sections}}
+            {{#if section.isDropdown}}
+                <li class="slds-list__item aljs-has-nav-dropdown">
+                    <a href="#" class="aljs-toggle-dropdown">{{section.name}}</a>
+                    <ul class="slds-list--vertical slds-has-block-links aljs-nav-dropdown slds-hide">
+                        {{#each subSection in section.subSections}}
+                            {{#link-to subSection.path tagName="li" class="slds-list__item" activeClass="slds-is-selected slds-is-active"}}<a href="#">{{subSection.name}}</a>{{/link-to}}
+                        {{/each}}
+                    </ul>
+                </li>
+            {{else}}
+                {{#if section.externalPath}}
+                    <li class="slds-list__item"><a {{bind-attr href=section.externalPath}} target="_blank">{{section.name}}</a></li>
+                {{else}}
+                    {{#link-to section.path tagName="li" class="slds-list__item" activeClass="slds-is-selected slds-is-active"}}<a href="#">{{section.name}}</a>{{/link-to}}
+                {{/if}}
+            {{/if}}
+        {{/each}}
+    </ul>
+</nav>
+<footer class="site-contentinfo slds-wrap site-text-longform slds-text-body--small" role="contentinfo">
+    <p class="slds-col--padded slds-p-right--large">&copy; 2015 <a href="http://appiphony.com/" target="_blank">Appiphony</a>. All rights reserved. The Salesforce Sans Font is used under license from Salesforce.com, Inc.</p>
+</footer>

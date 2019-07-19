@@ -26,6 +26,7 @@
   </types>
   <types>
     <name>ApexClass</name>
+    <members>HelloWorld</members>
     <members>egServerSideActionController</members>
     <members>egServerSideActionControllerTest</members>
   </types>
@@ -45,10 +46,6 @@
   <types>
     <name>PermissionSet</name>
     <members>VSCIMay2019_Admin</members>
-  </types>
-  <types>
-    <name>Profile</name>
-    <members>Admin</members>
   </types>
   <types>
     <name>StaticResource</name>

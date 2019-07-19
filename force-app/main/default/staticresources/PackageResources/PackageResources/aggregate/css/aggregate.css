@@ -1,0 +1,90 @@
+.pointerEventNone {
+    pointer-events:none !important;
+}
+
+.not-allowed {
+    cursor: not-allowed !important;
+}
+
+.marginLeft {
+    margin-left: 0.5rem !important;
+}
+
+.inputBoxWidth {
+    width: 30% !important;
+}
+
+.inputTextWidth {
+    width: 240px !important;
+}
+
+.addIcon {
+    font-size: 2rem;
+}
+
+.verticaleTopAlign {
+    vertical-align: top;
+}
+
+.filterRowMargin {
+    margin-bottom: 0.5rem;
+}
+
+.fieldPadding {
+    padding-bottom: 0.4rem !important;
+}
+
+.requiredField {
+}
+
+.disagginputText {
+    width: 140px !important;
+}
+
+.disaggTD {
+    width: 100px !important;
+}
+
+.LoadingBackground {
+    background-color:#FFFFFF;
+    opacity:0.85;
+    filter:alpha(opacity = 50);
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9998;
+    top:0;
+    left:0;
+}
+.Loading {
+    z-index:9999;
+    width:96%;
+    top:50%;
+    text-align:center;
+    position:fixed;
+}
+.LoadingData {
+    z-index:9999;
+    left:53%;
+    top:48%;
+    text-align:center;
+    position:fixed;
+    font-weight:600;
+}
+
+.referenceFieldIcon {
+    width: 1.0em !important;
+    height: 1.0em !important;
+}
+
+.agg-instruction {
+    padding: 1rem;
+}
+
+.colorInherit {
+    color: inherit !important;
+}
+
+.fontInherit {
+    font-size: inherit !important;
+}

@@ -1,0 +1,75 @@
+.projectIndicatorPill {
+    border: 0px!important;
+    float: left;
+}
+
+.searchIndicatorDropdown {
+    width: .75rem!important;
+    height: .75rem!important;
+    position: absolute!important
+    right: 1rem!important;
+    top: 50%!important;
+    margin-top: -.375rem!important;
+    fill: #54698d!important;
+}
+
+.slds-input-has-icon--left .slds-input__icon {
+    left: .75rem!important;
+}
+
+.pillRemoveIcon {
+    color: #55688d!important;
+    padding: 2px;
+    margin-top: 1.5px;
+}
+
+.pillElement {
+    max-width: 220px!important;
+    margin: 3px;
+}
+
+.topMargin {
+    margin-top: 15px;
+}
+
+#formulaInput {
+    height: 100px
+}
+
+.popupContainer {
+    height: 310px;
+}
+
+.indicatorTypeahead {
+    width: 27rem!important;
+}
+
+.indicatorDropdown {
+    width: 27rem!important;
+    max-width: 27rem!important;
+}
+
+.formulaErrorContainer {
+    color: red;
+}
+
+.displayNoneElement {
+    display: none;
+}
+
+.dropdownOptions {
+    border: 1px solid #d8dde6;
+    border-radius: .25rem;
+    z-index: 7000;
+    margin-top: 0.40rem;
+    position: absolute;
+    background: #fff;
+}
+
+/*.slds .slds .slds-dropdown-trigger:hover .slds-dropdown{
+    visibility:hidden!important;
+}*/
+
+/*.slds .slds .slds-dropdown-trigger--hover:hover .slds-dropdown{
+    visibility:hidden!important;
+}*/

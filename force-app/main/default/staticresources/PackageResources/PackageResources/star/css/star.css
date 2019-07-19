@@ -1,0 +1,242 @@
+.minMaxError {
+    border: 1px solid orange!important;
+}
+
+.slds-text-title--caps {
+    line-height: 1.25;
+    color: #54698d;
+    letter-spacing: 0.0625rem;
+}
+.expandCollapseIcons {
+    margin-left: -28px!important;
+    margin-top: -4px!important;
+}
+.activeLI {
+    background-color: #f4f6f9;
+}
+
+.disabledButttonPagination, .prev.disabled, .next.disabled, .first.disabled, .last.disabled{
+    background-color: #fff!important;
+    cursor: default!important;
+    color: #d8dde6!important;
+}
+
+.selectedButtonPagination {
+    background-color: #f4f6f9!important;
+    color: #005fb2!important;
+}
+
+.paging_full_numbers {
+    text-align: center;
+}
+
+.previousButtonPagination, .previous {
+    margin-right: .25rem;
+}
+
+.nextButtonPagination, .next {
+    margin-left: .25rem;
+}
+
+.noDecoration {
+    text-decoration: none;
+}
+
+.noDecoration:link {
+    text-decoration: none;
+}
+
+.noDecoration:visited {
+    text-decoration: none;
+}
+
+.noDecoration:hover {
+    text-decoration: underline;
+}
+
+.noDecoration:active {
+    text-decoration: underline;
+}
+
+.targetResultHeader {
+    min-width: 49%!important;
+    max-width: 49%!important;
+    text-align: center;
+}
+
+.noDisplayElement {
+    display: none !important;
+}
+
+.marginBottom {
+    margin-bottom: 1rem;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.ProcessingBackground {
+    background-color:#FFFFFF;
+    opacity:0.85;
+    filter:alpha(opacity = 50);
+    width:100%;
+    height:100%;
+    position:fixed;
+    z-index:9998;
+    top:0;
+    left:0;
+}
+
+.Processing {
+    z-index:9999;
+    width:96%;
+    top:50%;
+    text-align:center;
+    position:fixed;
+}
+
+.ProcessingData {
+    z-index:9999;
+    left:53%;
+    top:48%;
+    text-align:center;
+    position:fixed;
+    font-weight:600;
+}
+
+.noBorderBottom {
+    border-bottom: 0px!important;
+}
+
+.dataTables_paginate {
+    margin-top: 10px;
+}
+
+.errorPanel {
+    position: inherit !important;
+}
+.errorPanelToast {
+    width: 99% !important;
+    background-color: #8b0000 !important;
+}
+
+.disagPicklist {
+    width: 30%;float:left;
+}
+
+.descriptionColumn {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.projectChatterFeed {
+    margin-top: -10px;
+}
+
+.mainContainer {
+    margin-top: 10px;
+}
+
+.qualitativeIcons {
+    width: 1.5rem!important;
+}
+
+.scrollTopIcon {
+    z-index: 1;
+}
+
+.geographicAreaPiclklist {
+    margin-left: 3%;
+}
+
+.inputSearchFields {
+    width: 63%;
+}
+
+.multiselectArrowButtons {
+    padding-top: 40px;
+}
+
+.marginLeft {
+    margin-left: 1%;
+}
+
+.filterRowHeight {
+    height: 5px;
+}
+
+.positionRelative {
+    position: relative!important;
+}
+
+.zIndexZero {
+    z-index: 0!important;
+}
+
+.minMaxRangeError {
+    width: 78%;
+    float: left;
+    margin: 0;
+    margin-bottom: 13px;
+}
+
+.filtersTableColumn {
+    width: 10px;
+}
+
+.sldsIcons {
+    width: 1rem!important;
+}
+
+.visibiltyHidden {
+    visibility: hidden;
+}
+
+.displayNone {
+    display: none;
+}
+
+.dataLastColumn {
+    border-right: 0px!important;
+}
+
+.verticalAlignTop {
+    vertical-align: top;
+}
+
+.iconSize {
+    width: 18px!important;
+    height: 18px!important;
+}
+
+.noTargetSpanSize {
+    width: 50px;
+    height: 32px;
+    display: inline-block;
+}
+
+.actionIcons {
+    background-color: #54698D!important;
+}
+
+.notActive {
+    cursor: default !important;
+    color: #d8dde6 !important;
+}
+
+.DTFC_LeftBodyLiner {
+    overflow: hidden !important;
+}
+
+.progressBar {
+    float: left;
+    width: 63%;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    height: 2rem;
+}
+
+.buttonGroups {
+    margin-bottom: 2%;
+}

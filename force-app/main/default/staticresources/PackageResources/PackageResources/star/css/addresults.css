@@ -1,0 +1,172 @@
+.targetResultValue {
+    min-width: 50%;
+    max-width: 50%;
+    text-align: center;
+}
+
+.targetResultTable td{
+    border: 0px!important;
+}
+
+.slds .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover>td:not(.slds-is-selected), .slds .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover>th:not(.slds-is-selected) {
+        box-shadow: none;
+    }
+
+.projectIndicatorColumn {
+    min-width: 275px!important;
+    width: 275px!important;
+    max-width: 275px!important;
+}
+
+.projectIndicatorColumnWithoutTarget {
+    min-width: 295px!important;
+    max-width: 295px!important;
+}
+
+.infoPopoverIconColumn {
+    min-width: 50px!important;
+    max-width: 50px!important;
+    width: 50px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.infoPopoverIconColumnWithNoDisaggregation {
+    min-width: 107px !important;
+    max-width: 107px !important;
+    width: 107px !important;
+    border-right: 1px solid #d8dde6;
+}
+
+.totalColumn {
+    min-width: 386px!important;
+    max-width: 386px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.totalColumnWithoutTarget {
+    min-width: 240px!important;
+    max-width: 240px!important;
+    border-right: 1px solid #d8dde6;
+    text-align: center !important;
+}
+
+.disagColumns {
+    min-width: 292px!important;
+    max-width: 292px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.disagColumnsWithoutTarget {
+    min-width: 200px!important;
+    max-width: 200px!important;
+    border-right: 1px solid #d8dde6;
+}
+
+.bottomBar {
+    height: 50px!important;
+}
+
+.slds-dropdown {
+    z-index: 0!important;
+    position: relative!important;
+}
+
+.documentRichTextFields ul{
+    list-style-type: disc!important;
+    margin: 1em!important;
+    margin-left: 40px!important;
+}
+
+.documentRichTextFields ol{
+    list-style-type: decimal!important;
+    margin: 1em!important;
+    margin-left: 40px!important;
+}
+
+.descriptionWithAllColumns {
+    width: 239px;
+}
+
+.totalTargetResultColumn {
+    min-width: 140px;
+    max-width: 140px;
+    width: 40px;
+}
+
+.totalOtherColumn {
+    min-width: 35px;
+    max-width: 35px;
+    width: 35px;
+}
+
+.disagTargetColumn {
+    min-width: 116px;
+    max-width: 116px
+    width:116px;
+}
+
+.disagResultColumn {
+    min-width: 130.5px;
+    max-width: 130.5px;
+    width: 130.5px;
+}
+
+.disagOtherColumn {
+    min-width: 43.5px;
+    max-width: 43.5px;
+    width: 43.5px;
+}
+
+.totalColumnHeader {
+    text-align : center;
+}
+
+.totalColumnHeaderWithoutTarget {
+    margin-left: 65px;
+}
+
+.disagColummHeader {
+    text-align: center;
+}
+
+.disagColummHeaderWithoutTarget {
+    margin-left: 80px;
+}
+
+.totalTargetColumnHeader {
+    min-width: 39%;
+    max-width: 39%;
+    float: left;
+    text-align: center;
+}
+
+.disagTargetColumnHeader {
+    min-width: 43%;
+    max-width: 43%;
+    float: left;
+    text-align: center;
+}
+
+.disagResultColumnHeader {
+    text-align: center;
+}
+
+.unknownResultColumn {
+    border-right: 0px !important;
+}
+
+.resultColumnPadding {
+    padding-left: 16% !important;
+}
+
+.totalResultInputWidthWithoutTarget {
+    width: 106%;
+}
+
+.dataTableScrollBodyWhenNoDisaggregationBySex {
+    overflow-x: hidden !important;
+}
+
+.totalColumnPaddingWhenCrossDisaggregatedBySex {
+    padding-left: 11% !important;
+}

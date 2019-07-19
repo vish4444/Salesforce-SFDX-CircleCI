@@ -1,12 +1,12 @@
     <aura:component controller="HelloWorld" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
         <aura:attribute name="subject" type="String" default="there" />
-        <aura:attribute name="message" type="String" default="take care" />
+        <aura:attribute name="predicate" type="String" default="take care" />
     
         <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
         <div class="slds-card">
             <div>Hello {!v.subject},</div>
-            <div class="slds-card__body slds-card__body_inner slds-p-top_medium"> {!v.message} </div>
-            <lightning:input class="VSUniqueInput" aura:id="myInput" type="text" value="{!v.message}" />
+            <div class="slds-card__body slds-card__body_inner slds-p-top_medium"> {!v.predicate} </div>
+            <lightning:input class="VSUniqueInput" aura:id="myInput" type="text" value="{!v.predicate}" />
         </div>
     </aura:component>
