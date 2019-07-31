@@ -1,11 +1,12 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
-    <aura:attribute name="greeting" type="String" default="Thanos"/>
-    <div class="slds-card">
-    	<div class="slds-card__body slds-card__body_inner slds-p-top_medium">
-            Hello, {!v.greeting}!
-    		<!--<input class="slds-input" aura:id="myInput" type="text" />-->
-    		<lightning:input aura:id="myInput" type="text" value="{!v.greeting}"/>
+    <aura:component controller="HelloWorld" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+        <aura:attribute name="subject" type="String" default="there" />
+        <aura:attribute name="predicate" type="String" default="take care" />
+    
+        <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+        <div class="slds-card">
+            <div>Hello {!v.subject},</div>
+            <div class="slds-card__body slds-card__body_inner slds-p-top_medium"> {!v.predicate} </div>
+            <lightning:input class="VSUniqueInput" aura:id="myInput" type="text" value="{!v.predicate}" />
         </div>
-    </div>
-    		<!--<button class="slds-button slds-button_brand slds-m-top_small" name="Update" type="submit" onclick="{!c.updateValue}">Update</button>-->
-</aura:component>
+    </aura:component>
